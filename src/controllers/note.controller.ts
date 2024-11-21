@@ -3,8 +3,8 @@ import Note, { NoteDocument } from '../models/note'
 
 //determination de type de variable dans le body
 export interface IncomingBody {
-    title: string,
-    description: string,
+    title: string;
+    description?: string;
 }
 
 export const create: RequestHandler = async (req, res) => {
@@ -15,12 +15,12 @@ export const create: RequestHandler = async (req, res) => {
 
     await newNote.save();*/
 
-    Note.create<NoteDocument>({
+    const newNote = await Note.create<NoteDocument>({
         title: (req.body as IncomingBody).title,
         description: (req.body as IncomingBody).description,
-    })
+    });
 
-    res.json({message: "successfylly created!!"});
+    res.json({note: {id: newNote._id, title: newNote.title, description: newNote.description}});
 };
 
 export const updateSingDoc: RequestHandler =  async (req, res) =>{

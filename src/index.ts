@@ -9,7 +9,7 @@ import noteRouter from "./routers/note.router";
  * localhost:8000/note/noteId
  * localhost:8000/note/create
  * localhost:8000/note/create
- */
+*/
 
 //creation d'un server
 const app = express();
@@ -17,11 +17,10 @@ const app = express();
 //const cors = require('cors');
 app.use(cors());
 
+//this will parse post request coming from fetch.post() method this methode have to be placed before the router setup.
+app.use(express.json());
 
 app.use("/note", noteRouter);
-
-//this will parse post request coming from fetch.post() method
-app.use(express.json());
 
 //this will parse post request coming from html form
 app.use(express.urlencoded({extended: false}));

@@ -4,7 +4,7 @@ import { create, readingAllDoc, readingSingleDoc, removeSingleDoc, updateSingDoc
 const router = Router()
 
 //created documents   
-router.post('/create', create),
+router.post("/create", create),
 
 //updated documents 
 router.patch("/:noteId", updateSingDoc);
@@ -13,10 +13,10 @@ router.patch("/:noteId", updateSingDoc);
 router.delete("/:noteId", removeSingleDoc); 
 
 //reading an entire document in the DB
-router.get('/', readingAllDoc);
+router.get("/", readingAllDoc);
 
 //Reading a single document with a particylar id in the DB
-router.get('/:id', readingSingleDoc);
+router.get("/:id", readingSingleDoc);
 
 
 export default router
