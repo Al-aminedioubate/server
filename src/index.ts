@@ -14,16 +14,15 @@ import noteRouter from "./routers/note.router";
 //creation d'un server
 const app = express();
 
-//const cors = require('cors');
-app.use(cors());
+app.use(cors());            //pour eviter des erreur de lecture par axios
 
 //this will parse post request coming from fetch.post() method this methode have to be placed before the router setup.
 app.use(express.json());
 
-app.use("/note", noteRouter);
-
 //this will parse post request coming from html form
 app.use(express.urlencoded({extended: false}));
+
+app.use("/note", noteRouter);
 
 //listen to some port
 app.listen(8000, ()=>{

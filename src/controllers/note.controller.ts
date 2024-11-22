@@ -59,7 +59,14 @@ export const removeSingleDoc: RequestHandler = async (req, res) => {
 
 export const readingAllDoc: RequestHandler = async (req, res) => {
     const notes = await Note.find();
-    res.json({notes});
+    res.json({notes: notes.map((note) =>{
+        return {
+            id: note._id,
+            title: note.title,
+            description: note.description,
+        }
+
+    })});
 }
 
 export const readingSingleDoc: RequestHandler = async (req, res) => {

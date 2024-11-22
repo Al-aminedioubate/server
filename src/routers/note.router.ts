@@ -1,10 +1,10 @@
 import { Router } from "express";
 import { create, readingAllDoc, readingSingleDoc, removeSingleDoc, updateSingDoc } from "../controllers/note.controller";
 
-const router = Router()
+const router = Router();
 
 //created documents   
-router.post("/create", create),
+router.post("/create", create);
 
 //updated documents 
 router.patch("/:noteId", updateSingDoc);
