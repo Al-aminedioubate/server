@@ -26,12 +26,6 @@ export const create: RequestHandler = async (req, res) => {
 export const updateSingDoc: RequestHandler =  async (req, res) =>{
     const {noteId} = req.params;
 
-    /*const note = await Note.findById(noteId);
-    if(!note) return res.json({error: "Note not found!!"});
-    const {title, description} = req.body as IncomingBody;
-    if(title) note.title = title;
-    if(description) note.description = description;*/
-
     const {title, description} = req.body as IncomingBody;
     const note = await Note.findByIdAndUpdate(
         noteId,
@@ -41,9 +35,9 @@ export const updateSingDoc: RequestHandler =  async (req, res) =>{
 
     if(!note) return res.json({error: "Note not found!!"});
 
-    await note.save();
+    //await note.save();
 
-    res.json({note});
+    res.json({note: {id: note._id, title: note.title, description: note.description}});
 };
 
 export const removeSingleDoc: RequestHandler = async (req, res) => {
