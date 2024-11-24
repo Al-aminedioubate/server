@@ -44,7 +44,7 @@ export const removeSingleDoc: RequestHandler = async (req, res) => {
     const {noteId} = req.params;
 
    const removedNote = await Note.findByIdAndDelete(noteId);
-   if(!removedNote){
+    if(!removedNote){
         return res.json({error: "could not remove note"});
     } 
 
